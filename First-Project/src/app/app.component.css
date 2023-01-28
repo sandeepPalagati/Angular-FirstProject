@@ -1,0 +1,7 @@
+app-servers{
+    background-color: yellow;
+}
+:host{
+    width: 50%;
+    display: block;
+}
