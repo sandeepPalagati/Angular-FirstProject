@@ -6,32 +6,35 @@ import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from "@an
     templateUrl:'./server.component.html',
     styleUrls:['./server.component.css']
 })
-export class ServerComponent implements OnInit,OnChanges,DoCheck{
+export class ServerComponent{
     
-    @Input() childMessage:string | undefined;
+    // @Input() childMessage:string | undefined;
     __name: String = 'sandeep';
     __isDisabled: boolean = false;
-    private __inputText: String = "see you !";
+     __inputText: String = "see you !";
     h1_color: String = 'rgb(255, 165, 0)';
     h3_color: String = 'rgb(255, 165, 140)'
 
 
 
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log("Inside ngOnChanges ")
-    }
+    // ngOnChanges(changes: SimpleChanges): void {
+    //     console.log("Inside ngOnChanges ")
+    // }
 
+    set inputText(input:String){
+        this.__inputText = input;
+    }
     
-    ngOnInit(): void {
-        setTimeout(()=>{
-            this.__inputText = "Iam Back !";
-        },10000);
+    // ngOnInit(): void {
+    //     setTimeout(()=>{
+    //         this.__inputText = "Iam Back !";
+    //     },10000);
         
-    }
+    // }
 
-    ngDoCheck(): void {
-        console.log("Inside do check method "+this.__inputText)
-    }
+    // ngDoCheck(): void {
+    //     console.log("Inside do check method "+this.__inputText)
+    // }
 
     set name(nameVal:String){
         this.__name=nameVal;
@@ -40,7 +43,7 @@ export class ServerComponent implements OnInit,OnChanges,DoCheck{
         return this.__name;
     }
 
-    set_isDisabled(){
+    set_isDisabled(event:Event){
         this.__isDisabled = !this.__isDisabled;
     }
 
@@ -70,6 +73,7 @@ export class ServerComponent implements OnInit,OnChanges,DoCheck{
     get inputText():String{
         return this.__inputText;
     }
+
     onInput(event:any){
         this.__inputText = event.target.value;
     }
